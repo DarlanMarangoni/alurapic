@@ -15,7 +15,7 @@ export class AppComponent {
     //um observable não faz nada só olha é lazy load
     const observale = http.get<Object[]>('http://localhost:3000/flavio/photos');
     //agora ele pega os dados 
-    observale.subscribe(photos => this.photos = photos);
-  }
+    observale.subscribe(photos => this.photos = photos, err => console.log(err));
+  }\
 }
 
