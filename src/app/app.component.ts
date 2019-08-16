@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { PhotoService } from './photos/photo/photo.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,9 @@ export class AppComponent {
  
   photos: Object[] = [];
 
-  //criando  um cliente http
-  constructor(http: HttpClient){
-    //um observable não faz nada só olha é lazy load
-    const observale = http.get<Object[]>('http://localhost:3000/flavio/photos');
-    //agora ele pega os dados 
-    observale.subscribe(photos => this.photos = photos, err => console.log(err));
-  }\
+  constructor(photoService: PhotoService){
+    
+    photoService.listFromUser('flavio').subscribe(photos => this.photos = photos, err => console.log(err));
+  }
 }
 
