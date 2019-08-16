@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -6,16 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-  photos = [
-    {
-      url:'https://images.uncyc.org/pt/thumb/7/7c/Homerf.png/300px-Homerf.png',
-      description:'Hommer'
-    },
-    {
-      url:'http://d26lpennugtm8s.cloudfront.net/stores/802/372/products/bart1-b5a7e6b5fa4a4e179e15266685305387-1024-1024-eeac8a8ea17967548d15441973395151-640-0.png',
-      description:'Bart'
-    }
-  ];
+ 
+  photos: Object[] = [];
+
+  //criando  um cliente http
+  constructor(http: HttpClient){
+    //um observable não faz nada só olha é lazy load
+    const observale = http.get<Object[]>('http://localhost:3000/flavio/photos');
+    //agora ele pega os dados 
+    observale.subscribe(photos => this.photos = photos);
+  }
 }
 
