@@ -5,17 +5,25 @@ import { PhotosFormComponent } from './photos/photos-form/photos-form.component'
 import { PhotosListComponent } from './photos/photos-list/photos-list.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PhotolistResolver } from './photos/photos-list/photo-list.resolver';
+import { SignInComponent } from './home/signin/signin.component';
 
 const routes: Routes = [
+    {
+        path: '', component: SignInComponent
+    },
     {
         path: 'user/:userName', 
         component: PhotosListComponent,
         resolve: {
             photos: PhotolistResolver
-        }
+    }
     },
-    {path: 'p/add', component: PhotosFormComponent},
-    {path: '**', component: NotFoundComponent}
+    {
+        path: 'p/add', component: PhotosFormComponent
+    },
+    {
+        path: '**', component: NotFoundComponent
+    }
 ];
 @NgModule({
     imports: [
