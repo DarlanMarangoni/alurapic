@@ -17,6 +17,7 @@ export class AuthService {
     return this.http.post(API_URL + '/user/login', {userName, password}, {observe: 'response'})
             .pipe(tap(res =>{
               const authToken = res.headers.get('x-access-token');
+              window.localStorage.setItem('authToken', authToken);
               console.log(`User ${userName} authenticated with token ${authToken}`);
             }));
   }
