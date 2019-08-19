@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { PhotosFormModule } from './photos-form/photos-form.module';
 import { PhotoListModule } from './photos-list/photo-list.module';
 import { PhotoModule } from './photo/photo.module';
+import { DarkOnHoverModule } from '../shared/directives/darken-on-hover/darken-on-hover.module';
 
 @NgModule({
    
