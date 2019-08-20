@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
     exports: [DarkenOnHoverDiretive],
     imports: [CommonModule]
 })
+
 export class DarkenOnHoverModule{
 
 }
