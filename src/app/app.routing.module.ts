@@ -16,23 +16,32 @@ const routes: Routes = [
     },    
     {
         path: 'home',
-        loadChildren: './home/home.module#HomeModule'        
+        loadChildren: './home/home.module#HomeModule'       
     },    
     {
         path: 'user/:userName', 
         component: PhotosListComponent,
         resolve: {
             photos: PhotolistResolver
+    },
+    data: {
+        title: 'Timeline'
     }
     },
     {
         path: 'p/add', 
         component: PhotosFormComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: {
+            title: 'Photo Upload'
+        }
     },
     {
         path: 'p/:photoId', 
-        component: PhotoDetailsComponent
+        component: PhotoDetailsComponent,
+        data: {
+            title: 'Photo Detail'
+        }
     },
     {
         path: 'not-found', 
@@ -40,7 +49,10 @@ const routes: Routes = [
     },
     {
         path: '**', 
-        redirectTo: 'not-found'
+        redirectTo: 'not-found',
+        data: {
+            title: 'Not Found'
+        }
     }
 ];
 @NgModule({
