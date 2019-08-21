@@ -6,17 +6,19 @@ import { Observable } from 'rxjs';
 
 @Component({
     templateUrl: './photo-details.component.html',
-    styleUrls: ['photos-details.css']
+    styleUrls: ['photo-details.css']
 })
 export class PhotoDetailsComponent implements OnInit{
 
     photo$: Observable<Photo>;
-    
+    photoId: number;
+
     constructor(private route: ActivatedRoute, private photoService: PhotoService){
         
     }
     
     ngOnInit(): void {
-        this.photo$ = this.photoService.findById(this.route.snapshot.params.photoId);
+        this.photoId = this.route.snapshot.params.photoId;
+        this.photo$ = this.photoService.findById(this.photoId);
     }
 }
