@@ -21,8 +21,8 @@ export class AlertComponent{
                 }
                 this.alerts.push(alert);
                 setTimeout(() => {
-                    this.removeAlert(alert), this.timeout;
-                });              
+                    this.removeAlert(alert);
+                }, this.timeout);              
             })
     }
 
